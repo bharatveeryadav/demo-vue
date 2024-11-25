@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" data-dpr="1" dir="ltr" style="font-size: 39.4px;">
+<head>
+  <meta charset="UTF-8">
+ <link rel="icon" type="image/svg+xml" href="/damangame.png">
+  <meta name="google" content="notranslate">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>89 Club</title>
+  <link rel="stylesheet" href="/css/bet/wingo/main.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c0.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c1.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c2.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c3.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c4.css" />
+  <link rel="stylesheet" href="/Tclottery/assets/css/page-home-4a55d8dd.css" />
+  <link rel="shortcut icon" href="/images/bitbug_favicon.ico" type="image/x-icon">
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      background-color: #9195a3;
+      padding: 0;
+      margin: 0;
+    }
+    .wingo-change-time-img{
+        transition: 1s;
+    }
+    
+    #line_canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+    }
+
+    .block-click {
+      pointer-events: none;
+    }
+  </style>
+  <style>
+    /* The Modal (background) */
+    .modal {
+      display: blocked;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 20001;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+    }
+
+    .text-over-image {
+      position: absolute;
+      /* Position relative to the parent element */
+      top: 35%;
+      /* Center vertically */
+      left: 50%;
+      /* Center horizontally */
+      transform: translate(-50%, -50%);
+      /* Adjust the positioning */
+      color: #fff;
+      /* Text color */
+      font-size: 24px;
+      /* Text size */
+      font-weight: bold;
+      /* Text weight */
+      text-align: center;
+      /* Center text */
+    }
+
+    .text-over-image-l {
+      position: absolute;
+      /* Position relative to the parent element */
+      top: 48%;
+      /* Center vertically */
+      left: 49%;
+      /* Center horizontally */
+      transform: translate(-50%, -50%);
+      /* Adjust the positioning */
+      color: #fff;
+      /* Text color */
+      font-size: 10px;
+      /* Text size */
+      font-weight: bold;
+      /* Text weight */
+      text-align: center;
+      /* Center text */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      text-align: -webkit-center;
+      position: relative;
+      top: 20%;
+    }
+
+    .modal-content img {
+      width: 280px;
+      /* Use this to ensure the image is full width */
+      height: auto;
+      /* Adjust height automatically */
+      display: block;
+      /* Change display to block to avoid extra space */
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Circle button style */
+    .close-btn {
+      border: 2px solid #fff;
+      /* Black border */
+      border-radius: 50%;
+      /* Circle shape */
+      background-color: transparent;
+      /* Transparent background */
+      width: 30px;
+      /* Width and height should be equal for a circle */
+      height: 30px;
+      /* Width and height should be equal for a circle */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .close-btn:hover {
+      background-color: #ddd;
+      /* Light grey background on hover */
+    }
+
+    /* "X" line style */
+    .close-x {
+      font-size: 35px;
+      /* Large font size for the "X" */
+      font-family: none;
+      line-height: 1;
+      /* Tight line height for the "X" */
+      color: #fff;
+      /* Black color for the "X" */
+      padding: 0;
+      /* No padding */
+      margin: 0;
+      /* No margin */
+    }
+
+    .text-over-image-2 {
+      position: absolute;
+      top: 65%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ff850f;
+      font-size: 25px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .text-over-image-3 {
+      position: absolute;
+      top: 72%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #8c4500;
+      font-size: 12px;
+      font-weight: none;
+      text-align: center;
+    }
+
+    .btn-boox {
+      background: linear-gradient(to bottom, #20d90a, #aae69d);
+      border: none;
+      color: white;
+      padding: 5px 6px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 10px;
+      margin: 4px 4px;
+      cursor: pointer;
+      font-family: monospace;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body style="font-size: 12px">
+  <div id="app">
+    <div data-v-a9660e98="" class="mian game">
+      <div data-v-106b99c8="" data-v-a9660e98="" class="navbar">
+        <div data-v-106b99c8="" class="navbar-left" onclick="location.href='/home'">
+          <div data-v-a9660e98="" data-v-106b99c8="" class="c-row c-row-middle-center">
+            <img data-v-a9660e98="" data-v-106b99c8="" src="/images/back.c3244ab0.png" class="navbar-back" />
+          </div>
+        </div>
+        <div data-v-106b99c8="" class="navbar-title">
+          <div data-v-a9660e98="" data-v-106b99c8="" class="c-row c-row-middle-center">
+            <img data-v-a9660e98="" data-v-106b99c8="" height="38px" width="100px" src="assets/png/redlogo.png" class="logo"
+              style="height: .80333rem!important;" />
+          </div>
+        </div>
+        <div data-v-106b99c8="" class="navbar-right">
+          <div data-v-a9660e98="" data-v-106b99c8="" class="c-row navbarR">
+            <div data-v-a9660e98="" data-v-106b99c8="" class="c-row item c-row-middle-center"
+              onclick="location.href='/keFuMenu'">
+              <img data-v-a9660e98="" data-v-106b99c8="" src="/images/audio.webp" class="item-audio" />
+            </div>
+            <div data-v-a9660e98="" data-v-106b99c8="" class="c-row item c-row-middle-center">
+              <img data-v-a9660e98="" data-v-106b99c8="" src="/images/volume-up-line.webp" class="item-volume" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!---------->
+      <div data-v-a9660e98="" class="game-head">
+        <div data-v-a9660e98="" class="total-box">
+          <div data-v-a9660e98="" class="c-row c-row-between c-row-middle info">
+            <div data-v-a9660e98="" class="c-row c-row-middle">
+              <div data-v-a9660e98="" class="num">
+                <!----><span data-v-a9660e98="">₹ 0.00 </span>
+              </div>
+              <img data-v-a9660e98="" style="width: 20px; height: 20px;margin-left:2px;"
+                onclick="alertMess('Refresh Successfully', this, 'success')"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAOVBMVEUAAACjo6OgoKCjo6OhoaGjo6Ofn5+np6ejo6Ojo6OlpaWioqKkpKSjo6Ojo6Ojo6Ojo6OkpKSjo6PuE3LfAAAAEnRSTlMAf0C/H98QIM/vMGCfj29Qr1+b1SuLAAAA4UlEQVQ4y+3Sy3aEIBBF0eJR8hCx+/7/x8amdCVCZYUMetZnpm4BBfr05hbblX+lEX2pBJ1uUDKTK1ojUGgyA2z/sHmcbVetG4YNDHBQaEXqxjykbj3gbzceSIdUbUcN8ARyQlz+oBUwHqC7dTF8000ehISNXpQsflh5T6gBrHw8L0JpBR6nlDmE7ucOZ7CnRsVe9AVio4GvAexCjcqFPaG8Vw6a27RXQrvEAg7sh189VNHa7/sFWP24AEY5F0qri3VcVwo0GYNnbU7g56xlgIvp0mfyBWNMer4W11Xp03v7Att9D7xKb3uAAAAAAElFTkSuQmCC">
+            </div>
+            <div data-v-a9660e98="" class="c-row c-row-middle">
+              <div data-v-a9660e98="" class="m-r-10">
+                <div data-v-a9660e98="" class="van-image" style="width: 30px; height: 30px">
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAe1BMVEUAAAD/P1T/PlP/9C3/R2T/Hzr/Ijv/Jz7/IDr/Mk7/O1L/Hzr/O1L/Nk7/Qlj/Qlz/IDr/PVP/ITv/Ij3/Hzr/PFL/1DL/8i//Ijz/O1L/8yv/Hzr/rjr/xTX/3C//6C3/aUj/ojz/Uk3/Xkr/lz7/RlD/dUb/hkH/0TJEpa1CAAAAGXRSTlMAYWKgE++BQsAi7+DbUkIysKCRcd/AwGJhd8HDxwAAARFJREFUWMPt1ElvgzAQhmHS2kAIS5ZueMAQyPb/f2E1VavK0OaQ+Q6RMu/JFz+yzOBI0/5uieVMbGOkl6yIrMFxKXFbEGe29F0C8WJLP6Wgy/utEI9KSkEvRjgqNE00OjtLs+xSNirz1rde3pr+KbnxP5tBktH5WNGVdtdOsslqQdlm+onyWthr6JW1uCoAF3LwSUEFFVRQQQjYN96FPUvAsWUCB46dg4IDe0iwdViwd2Bw77jD6exBYPvl8VGR4MgrjwEb3t7zqsOAZ95+GfgyMeDRcV3bOQwYnAwDHj0S5IYLFOQOHgpyp30T9PZ+Zy+2ggoqeI9gIQfLADSZ1MtNFFTlMi+rokmmXAgqTKQ9UJ9lIW92vx/DqgAAAABJRU5ErkJggg=="
+                    class="van-image__img wallimg" />
+                </div>
+              </div>
+              <div data-v-a9660e98="">
+                <span>Wallet</span>
+                <span>Balance</span>
+
+              </div>
+            </div>
+
+          </div>
+          <div data-v-a9660e98="" class="total-btn c-row c-row-between">
+            <div data-v-a9660e98="" class="item" onclick="location.href='/wallet/withdrawal'">
+              <button data-v-a9660e98="" style="border-color: #ff9080;"
+                class="btn van-button van-button--default van-button--normal van-button--block van-button--round">
+                <div data-v-a9660e98="" class="van-button__content">
+                  <span data-v-a9660e98="" class="van-button__text">
+                    Withdraw
+                  </span>
+                </div>
+              </button>
+            </div>
+            <div data-v-a9660e98="" class="item" onclick="location.href='/wallet/recharge'">
+              <button data-v-a9660e98=""
+                class="btn van-button van-button--default van-button--normal van-button--block van-button--round" style="
+        color: rgb(255, 255, 255);
+        background: #ff9080;
+        border-color: #ff9080;
+      ">
+                <div data-v-a9660e98="" class="van-button__content">
+                  <span data-v-a9660e98="" class="van-button__text">
+                    Deposit
+                  </span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div data-v-a9660e98="" class="m-t-15 notice">
+          <div data-v-a9660e98="" role="alert" class="van-notice-bar">
+            <i class="van-icon van-icon-volume-o van-notice-bar__left-icon">
+              <!---->
+            </i>
+             <div role="marquees" class="van-notice-bar__wraps">
+              <div class="van-notice-bar__contents">OFFICIAL TC WEBSITE LINK: tcgames.app  please make sure, to always use this links to login , dont use other link to login to avoid any fraud.  Thank you for your attention
+                <br>1.All recharge methods only available in RECHARGE menu on OFFICIAL TC website and application; 2.Submit 12 UTR number / UPI ref no for INSTANT recharge; 3. TC recharge account change everytime, DONOT SAVE to AVOID LOSS!!!<br>ATTENTION !! TC customer service only uses LIVECHAT available on our APPS / Website TC, apart from that ISNOT TC customer service, donot provide personal data and transactions to those acting on behalf TC games. Thank you
+              </div>
+            </div>
+            <div class="details-mar">Details</div>
+          </div>
+        </div>
+      </div> <!---------->
+      <div data-v-a9660e98="" class="game-betting">
+        <div data-v-a9660e98="" class="tab">
+          <div data-v-a9660e98="" class="box c-row">
+            <div data-v-a9660e98="" onclick="location.href='/win'" class="item c-tc" id="other_page">
+
+              <div data-v-a9660e98="" class="img c-row c-row-center p-b-10">
+
+                <div data-v-a9660e98="" class="txt c-tc">Win Go <br> 1 min</div>
+              </div>
+            </div>
+            <div data-v-a9660e98="" class="item c-tc action">
+
+              <div data-v-a9660e98="" class="img c-row c-row-center p-b-10" onclick="location.href='/win/3'">
+
+                <div data-v-a9660e98="" class="txt c-tc">Win Go <br> 3 min</div>
+              </div>
+            </div>
+            <div data-v-a9660e98="" class="item c-tc">
+
+              <div data-v-a9660e98="" class="img c-row c-row-center p-b-10" onclick="location.href='/win/5'">
+
+                <div data-v-a9660e98="" class="txt c-tc">Win Go <br> 5 min</div>
+              </div>
+            </div>
+            <div data-v-a9660e98="" class="item c-tc">
+
+              <div data-v-a9660e98="" class="img c-row c-row-center p-b-10" onclick="location.href='/win/10'">
+
+                <div data-v-a9660e98="" class="txt c-tc"> Win Go <br>10 min</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-v-a9660e98="" class="content">
+          <div data-v-a9660e98="" class="time-box c-row c-row-between m-b-10">
+            <div data-v-a9660e98="" class="info">
+              <div data-v-a9660e98="" class="txt"> <img src="/images/dashed.png" alt=""> How to play</div>
+              <p>Win Go 3Min</p>
+              <div class="wingo-change-time-img">
+              
+              </div>
+            </div>
+            <div data-v-a9660e98="" class="out">
+              <div data-v-a9660e98="" class="txt">
+                Time Remaining
+
+              </div>
+              <div data-v-a9660e98="" class="number c-row c-row-middle c-flew-end">
+                <div data-v-a9660e98="" class="item">0</div>
+                <div data-v-a9660e98="" class="item">0</div>
+                <div data-v-a9660e98="" class="item c-row c-row-middle">
+                  :
+                </div>
+                <div data-v-a9660e98="" class="item">0</div>
+                <div data-v-a9660e98="" class="item">0</div>
+              </div>
+              <div data-v-a9660e98="" class="number Period_id" id="Period_id"></div>
+            </div>
+          </div>
+          <div data-v-a9660e98="" class="box">
+            <div data-v-a9660e98="" class="mark-box c-row c-row-middle-center" style="display: none">
+              <span data-v-a9660e98="" class="item m-r-20">3</span><span data-v-a9660e98="" class="item m-l-20">6</span>
+            </div>
+            <div data-v-a9660e98="" class="con-box">
+              <div data-v-a9660e98="" class="color-box c-row c-row-between">
+                <button data-v-a9660e98="" type="button" data-join="x" class="btn green">Green</button>
+                <button data-v-a9660e98="" type="button" data-join="t" class="btn violet">Violet</button>
+                <button data-v-a9660e98="" type="button" data-join="d" class="btn red">Red</button>
+              </div>
+            </div>
+            <div data-v-a9660e98="" class="number-box action m-t-10 c-row c-row-between c-flex-warp">
+              <button data-v-a9660e98="" type="button" class="item action c-row c-row-middle-center m-b-10"
+                style="background-image: url(/assets/png/n0-30bd92d1.png);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;">
+                <div data-v-a9660e98="" class="number c-row c-row-middle-center">
+                  <span data-v-a9660e98="" class="" style="display:none">0</span>
+                </div>
+              </button><button data-v-a9660e98="" type="button" class="item c-row c-row-middle-center m-b-10"
+                style="background-image: url(/assets/png/n1-dfccbff5.png);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;">
+                <div data-v-a9660e98="" class="number c-row c-row-middle-center">
+                  <span data-v-a9660e98="" class="" style="display:none">1</span>
+                </div>
+              </button><button data-v-a9660e98="" type="button" class="item c-row c-row-middle-center m-b-10"
+                style="background-image: url(/assets/png/n2-c2913607.png);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;">
+                <div data-v-a9660e98="" class="number c-row c-row-middle-center">
+                  <span data-v-a9660e98="" class="" style="display:none">2</span>
+                </div>
+              </button><button data-v-a9660e98="" type="button" class="item c-row c-row-middle-center m-b-10"
+                style="background-image: url(/assets/png/n3-f92c313f.png);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;">
+                <div data-v-a9660e98="" class="number c-row c-row-middle-center">
+                  <span data-v-a9660e98="" class="" style="display:none">3</span>
+                </div>
+              </button><button data-v-a9660e98="" type="button" class="item c-row c-row-middle-center m-b-10"
+                style="background-image: url(/assets/png/n4-cb84933b.png);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;">
+                <div data-v-a9660e98="" class="number c-row c-row-middle-center">
+                  <span data-v-a9660e98="" class="" style="display:none">4</span>
+                </div>
+              </button><button data-v-a9660e98="" type="button" class="item c-row c-row-middle-center m-b-10"
+                style="background-image: url(/assets/png/n5-49d0e9c5.png);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;">
+                <div data-v-a9660e98="" class="number c-row c-row-middle-center">
+                  <span data-v-a9660e98="" class="" style="display:none">5</span>
+                </div>
+              </button><button data-v-a9660e98="" type="button" class="item c-row c-row-middle-center m-b-10"
+                style="background-image: url(/assets/png/n6-a56e0b9a.png);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;">
+                <div data-v-a9660e98="" class="number c-row c-row-middle-center">
+                  <span data-v-a9660e98="" class="" style="display:none">6</span>
+                </div>
+              </button><button data-v-a9660e98="" type="button" class="item c-row c-row-middle-center m-b-10"
+                style="background-image: url(/assets/png/n7-5961a17f.png);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;">
+                <div data-v-a9660e98="" class="number c-row c-row-middle-center">
+                  <span data-v-a9660e98="" class="" style="display:none">7</span>
+                </div>
+              </button><button data-v-a9660e98="" type="button" class="item c-row c-row-middle-center m-b-10"
+                style="background-image: url(/assets/png/n8-d4d951a4.png);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;">
+                <div data-v-a9660e98="" class="number c-row c-row-middle-center">
+                  <span data-v-a9660e98="" class="" style="display:none">8</span>
+                </div>
+              </button><button data-v-a9660e98="" type="button" class="item c-row c-row-middle-center m-b-10"
+                style="background-image: url(/assets/png/n9-a20f6f42.png);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;">
+                <div data-v-a9660e98="" class="number c-row c-row-middle-center">
+                  <span data-v-a9660e98="" class="" style="display:none">9</span>
+                </div>
+              </button>
+            </div>
+            <div data-v-a9660e98="" class="c-row c-row-between random-box">
+              <button data-v-a9660e98="" class="random">Random</button>
+              <div data-v-a9660e98="" class="c-row">
+                <div data-x="1" data-v-a9660e98="" class="item active"
+                  style="background-color: rgb(92, 186, 71); color: rgb(255, 255, 255)">
+                  X1
+                </div>
+                <div data-x="5" data-v-a9660e98="" class="item"
+                  style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0)">
+                  X5
+                </div>
+                <div data-x="10" data-v-a9660e98="" class="item"
+                  style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0)">
+                  X10
+                </div>
+                <div data-x="20" data-v-a9660e98="" class="item"
+                  style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0)">
+                  X20
+                </div>
+                <div data-x="50" data-v-a9660e98="" class="item"
+                  style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0)">
+                  X50
+                </div>
+                <div data-x="100" data-v-a9660e98="" class="item"
+                  style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0)">
+                  X100
+                </div>
+              </div>
+            </div>
+            <div data-v-a9660e98="" class="btn-box c-row">
+              <button data-v-a9660e98="" data-join="l" class="item yellow">Big</button>
+              <button data-v-a9660e98="" data-join="n" class="item green">Small</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-v-a9660e98="" class="game-list p-b-20">
+        <script>
+          let labels1;
+          let amounts1;
+          let data;
+          let canvas;
+          let ctx;
+          let gradient;
+          let padding;
+          let spaceBetween;
+          let x;
+          let y;
+          let prevX;
+          let prevY;
+          let value;
+          let index;
+
+        </script>
+        <div data-v-a9660e98="" class="tab c-row c-row-between">
+          <div data-v-a9660e98="" class="li c-row c-row-center">
+            <span data-v-a9660e98="" class="txt action">
+              Game History
+            </span>
+          </div>
+          <div data-v-a9660e98="" class="li c-row c-row-center">
+            <span data-v-a9660e98="" class="txt"> My Bets </span>
+          </div>
+          <div data-v-a9660e98="" class="li c-row c-row-center" onclick="fetchTrend()">
+            <span data-v-a9660e98="" class="txt "> Charts </span>
+          </div>
+
+        </div>
+        <div data-v-a9660e98="" class="con-box">
+          <div data-v-a9660e98="" class="list m-t-10">
+            <div data-v-a9660e98="" class="wrap">
+              <div data-v-a9660e98="" class="c-tc van-row">
+                <div data-v-a9660e98="" class="van-col van-col--8">Draw</div>
+                <div data-v-a9660e98="" class="van-col van-col--5">
+                  Number
+                </div>
+                <div data-v-a9660e98="" class="van-col van-col--5">
+                  Big/Small
+                </div>
+                <div data-v-a9660e98="" class="van-col van-col--6">
+                  Colour
+                </div>
+              </div>
+            </div>
+            <div data-v-a9660e98="">
+              <div data-v-a9660e98="" class="hb"></div>
+            </div>
+            <div data-v-a9660e98="" class="list-fooder"></div>
+          </div>
+          <div data-v-a9660e98="" class="page-nav c-row c-row-center c-tc">
+            <div data-v-a9660e98="" class="arr c-row c-row-middle-center block-click">
+              <i data-v-a9660e98="" class="van-icon van-icon-arrow-left icon" style="font-size: 20px">
+                <!---->
+              </i>
+            </div>
+            <div data-v-a9660e98="" class="number"></div>
+            <div data-v-a9660e98="" class="arr c-row c-row-middle-center action">
+              <i data-v-a9660e98="" class="van-icon van-icon-arrow icon action" style="font-size: 20px">
+                <!---->
+              </i>
+            </div>
+          </div>
+        </div>
+        <div data-v-a9660e98="" class="con-box p-b-20" style="display: none">
+          <div data-v-a9660e98="" class="c-row c-flew-end p-r-20">
+          </div>
+          <div data-v-a9660e98="" class="list m-t-10">
+            <div data-v-a9660e98="" class="p-t-5 p-b-5" id="history-order">
+
+            </div>
+            <div data-v-a9660e98="" class="list-fooder"></div>
+          </div>
+          <!---->
+          <div data-v-a9660e98="" class="page-nav c-row c-row-center c-tc">
+            <div data-v-a9660e98="" class="arr c-row c-row-middle-center">
+              <i data-v-a9660e98="" class="van-icon van-icon-arrow-left icon" style="font-size: 20px">
+                <!---->
+              </i>
+            </div>
+            <div data-v-a9660e98="" class="number"></div>
+            <div data-v-a9660e98="" class="arr c-row c-row-middle-center action">
+              <i data-v-a9660e98="" class="van-icon van-icon-arrow icon action" style="font-size: 20px">
+                <!---->
+              </i>
+            </div>
+          </div>
+        </div>
+        <div data-v-a9660e98="" class="con-box p-b-20" style="display: none;">
+          <div data-v-d79474c9="" data-v-b67ac651="" class="Trend__C"
+            apifun="e=>r(c.WinGoGetMyEmerdList,e).then(s=>s.data)" gopathname="AllLotteryGames-BettingRecordWin">
+            <div data-v-d79474c9="" class="Trend__C-head">
+              <div data-v-d79474c9="" class="van-row">
+                <div data-v-d79474c9="" class="van-col van-col--8">Period</div>
+                <div data-v-d79474c9="" class="van-col van-col--16">Number</div>
+              </div>
+            </div>
+            <div data-v-d79474c9="" class="Trend__C-body1">
+              <div data-v-d79474c9="" class="Trend__C-body1-line">Statistic (last 100 Periods)</div>
+              <div data-v-d79474c9="" class="Trend__C-body1-line lottery">
+                <div data-v-d79474c9="">Winning number</div>
+                <div data-v-d79474c9="" class="Trend__C-body1-line-num">
+                  <div data-v-d79474c9="">0</div>
+                  <div data-v-d79474c9="">1</div>
+                  <div data-v-d79474c9="">2</div>
+                  <div data-v-d79474c9="">3</div>
+                  <div data-v-d79474c9="">4</div>
+                  <div data-v-d79474c9="">5</div>
+                  <div data-v-d79474c9="">6</div>
+                  <div data-v-d79474c9="">7</div>
+                  <div data-v-d79474c9="">8</div>
+                  <div data-v-d79474c9="">9</div>
+                </div>
+              </div>
+              <div data-v-d79474c9="" class="Trend__C-body1-line">
+                <div data-v-d79474c9="">Missing</div>
+                <div data-v-d79474c9="" class="Trend__C-body1-line-num">
+                  <div data-v-d79474c9="">8</div>
+                  <div data-v-d79474c9="">13</div>
+                  <div data-v-d79474c9="">14</div>
+                  <div data-v-d79474c9="">1</div>
+                  <div data-v-d79474c9="">7</div>
+                  <div data-v-d79474c9="">4</div>
+                  <div data-v-d79474c9="">9</div>
+                  <div data-v-d79474c9="">11</div>
+                  <div data-v-d79474c9="">0</div>
+                  <div data-v-d79474c9="">3</div>
+                </div>
+              </div>
+              <div data-v-d79474c9="" class="Trend__C-body1-line">
+                <div data-v-d79474c9="">Avg missing</div>
+                <div data-v-d79474c9="" class="Trend__C-body1-line-num">
+                  <div data-v-d79474c9="">13</div>
+                  <div data-v-d79474c9="">10</div>
+                  <div data-v-d79474c9="">8</div>
+                  <div data-v-d79474c9="">8</div>
+                  <div data-v-d79474c9="">11</div>
+                  <div data-v-d79474c9="">6</div>
+                  <div data-v-d79474c9="">8</div>
+                  <div data-v-d79474c9="">9</div>
+                  <div data-v-d79474c9="">9</div>
+                  <div data-v-d79474c9="">10</div>
+                </div>
+              </div>
+              <div data-v-d79474c9="" class="Trend__C-body1-line">
+                <div data-v-d79474c9="">Frequency</div>
+                <div data-v-d79474c9="" class="Trend__C-body1-line-num">
+                  <div data-v-d79474c9="">7</div>
+                  <div data-v-d79474c9="">8</div>
+                  <div data-v-d79474c9="">11</div>
+                  <div data-v-d79474c9="">12</div>
+                  <div data-v-d79474c9="">8</div>
+                  <div data-v-d79474c9="">13</div>
+                  <div data-v-d79474c9="">11</div>
+                  <div data-v-d79474c9="">9</div>
+                  <div data-v-d79474c9="">12</div>
+                  <div data-v-d79474c9="">9</div>
+                </div>
+              </div>
+              <div data-v-d79474c9="" class="Trend__C-body1-line">
+                <div data-v-d79474c9="">Max consecutive</div>
+                <div data-v-d79474c9="" class="Trend__C-body1-line-num">
+                  <div data-v-d79474c9="">2</div>
+                  <div data-v-d79474c9="">1</div>
+                  <div data-v-d79474c9="">2</div>
+                  <div data-v-d79474c9="">2</div>
+                  <div data-v-d79474c9="">2</div>
+                  <div data-v-d79474c9="">2</div>
+                  <div data-v-d79474c9="">2</div>
+                  <div data-v-d79474c9="">1</div>
+                  <div data-v-d79474c9="">2</div>
+                  <div data-v-d79474c9="">2</div>
+                </div>
+              </div>
+            </div>
+            <div style="position:relative;" id="trend_container">
+                <div data-v-d79474c9="" class="Trend__C-body2" >
+              
+                </div>
+                <canvas id="line_canvas"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="van-overlay" style="z-index: 2031; display: none;"></div>
+        <div data-v-a9660e98="" class="popup-join van-popup van-popup--round van-popup--bottom"
+          style="transform: translateY(400px);max-width: 10rem; left: auto; z-index: 2032; display: none;">
+          <div data-v-a9660e98="" class="betting-mark colorred">
+            <div data-v-a9660e98="" class="head">
+              <div data-v-a9660e98="" class="box">
+                <div data-v-a9660e98="" class="con">1 Minute</div>
+                <div data-v-a9660e98="" class="color" style="color: rgb(251, 78, 78);">Choose<span data-v-a9660e98=""
+                    class="p-l-10">Red</span></div>
+              </div>
+            </div>
+            <div data-v-a9660e98="" class="info">
+              <div data-v-a9660e98="" class="item c-row c-row-between">
+                <div data-v-a9660e98="" class="tit">Amount</div>
+                <div data-v-a9660e98="" class="c-row amount-box" data-money="1">
+                  <div data-x="1" data-v-a9660e98="" class="li"
+                    style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0);">1</div>
+                  <div data-x="10" data-v-a9660e98="" class="li"
+                    style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0);">10</div>
+                  <div data-x="100" data-v-a9660e98="" class="li"
+                    style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0);">100</div>
+                  <div data-x="1000" data-v-a9660e98="" class="li"
+                    style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0);">1000</div>
+                  <div data-x="10000" data-v-a9660e98="" class="li"
+                    style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0);">10000</div>
+                </div>
+              </div>
+              <div data-v-a9660e98="" class="item c-row c-row-between">
+                <div data-v-a9660e98="" class="tit">Quantity</div>
+                <div data-v-a9660e98="" class="c-row c-row-between stepper-box">
+                  <div data-v-a9660e98="" class="li minus"
+                    style="background-color: rgb(240, 240, 240); color: rgb(200, 201, 204);">-</div>
+                  <div data-v-a9660e98="" class="digit-box van-cell van-field">
+                    <div class="van-cell__value van-cell__value--alone van-field__value">
+                      <div class="van-field__body">
+                        <input type="tel" inputmode="numeric" class="van-field__control"
+                          oninput="value=value.replace(/\D/g,'')" value="1">
+                      </div>
+                    </div>
+                  </div>
+                  <div data-v-a9660e98="" class="li plus c-row c-row-middle-center"
+                    style="background-color: rgb(251, 78, 78); color: rgb(255, 255, 255);">+</div>
+                </div>
+              </div>
+              <div data-v-a9660e98="" class="item c-row c-flew-end">
+                <div data-v-a9660e98="" class="c-row multiple-box">
+                  <div data-x="1" data-v-a9660e98="" class="li"
+                    style="background-color: rgb(251, 78, 78); color: rgb(255, 255, 255);">X1</div>
+                  <div data-x="5" data-v-a9660e98="" class="li"
+                    style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0);">X5</div>
+                  <div data-x="10" data-v-a9660e98="" class="li"
+                    style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0);"> X10 </div>
+                  <div data-x="20" data-v-a9660e98="" class="li"
+                    style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0);"> X20 </div>
+                  <div data-x="50" data-v-a9660e98="" class="li"
+                    style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0);">X50</div>
+                  <div data-x="100" data-v-a9660e98="" class="li"
+                    style="background-color: rgb(240, 240, 240); color: rgb(0, 0, 0);">X100</div>
+                </div>
+              </div>
+              <div data-v-a9660e98="" class="item c-row c-row-middle">
+                <div data-v-a9660e98="" role="checkbox" tabindex="0" aria-checked="true" class="van-checkbox">
+                  <div class="van-checkbox__icon van-checkbox__icon--square van-checkbox__icon--checked"><i
+                      class="van-icon van-icon-success"
+                      style="border-color: rgb(244, 69, 62); background-color: rgb(244, 69, 62);">
+                      <!---->
+                    </i></div><span class="van-checkbox__label">
+                    <div data-v-a9660e98="" class="agree p-r-15">Rules</div>
+                  </span>
+                </div><span data-v-a9660e98="" class="txt">Pre-Selling</span>
+              </div>
+            </div>
+            <div data-v-a9660e98="" class="foot c-row">
+              <div data-v-a9660e98="" class="left"> Cancel </div>
+              <div data-v-a9660e98="" class="right" id="join_bet" style=""><span data-v-a9660e98="" class="p-r-5">Total
+                  Amount</span>
+                <!----><span data-v-a9660e98="">1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!---->
+      <!---->
+      <!---->
+      <div data-v-a9660e98="" id="moveBox" class="moveBox" style="display: none">
+        <div data-v-a9660e98="" class="moveHead c-row c-row-between c-row-middle">
+          <div data-v-a9660e98="" class="close">Close</div>
+          <div data-v-a9660e98="">
+            <span data-v-a9660e98="">Full Screen</span>
+          </div>
+        </div>
+        <div data-v-a9660e98="" class="long">
+          <div data-v-a9660e98="" class="van-tabs van-tabs--line">
+            <div class="van-tabs__wrap van-hairline--top-bottom">
+              <div role="tablist" class="van-tabs__nav van-tabs__nav--line">
+                <div role="tab" aria-selected="true" class="van-tab van-tab--active">
+                  <span class="van-tab__text van-tab__text--ellipsis">Bệt rồng mới nhất</span>
+                </div>
+                <div role="tab" class="van-tab">
+                  <span class="van-tab__text van-tab__text--ellipsis">My Bets</span>
+                </div>
+                <div class="van-tabs__line"></div>
+              </div>
+            </div>
+            <div class="van-tabs__content">
+              <div data-v-a9660e98="" role="tabpanel" class="van-tab__pane" style="">
+                <div data-v-a9660e98="" class="longlist"></div>
+              </div>
+              <div data-v-a9660e98="" role="tabpanel" class="van-tab__pane" style="display: none">
+                <!---->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-v-a9660e98="" id="sipachp">
+        <!-- <audio data-v-a9660e98="" id="voice1" muted="muted">
+                        <source data-v-a9660e98="" src="/audio/di1.da40b233.mp3" type="audio/mpeg" />
+                    </audio>
+                    <audio data-v-a9660e98="" id="voice2" muted="muted">
+                        <source data-v-a9660e98="" src="/audio/di2.317de251.mp3" type="audio/mpeg" />
+                    </audio> -->
+      </div>
+      <div data-v-a9660e98="" class="popup-qt van-popup van-popup--center"
+        style="width: 80%; border-radius: 10px; max-width: 340px; z-index: 2040;display: none;">
+        <div data-v-a9660e98="" class="rule-box">
+          <div data-v-a9660e98="" class="title c-row c-row-middle-center">Pre-Selling Rules</div>
+          <div data-v-a9660e98="" class="info">
+            <div data-v-a9660e98="" class="comment"> To protect users' rights - legitimate interests
+              participate in the pre-sale and maintain the normal operating sequence of the pre-sale, the rules
+              rules developed under the agreement in accordance with the relevant agreements and rules of
+              national laws and regulations. Chapter 1 Definition1.1 Definition of presale: refer to
+              A sales model in which a seller offers a bundle of products or services to collect orders
+              Consumer ordering through pre-sale and delivery product tools
+              goods and services to the seller as agreed in advance. 1.2 The pre-sale model is the "Signed ." model
+              "Deposit" is referred to as a fixed amount of pre-sold goods
+              available. The "deposit" can participate in mini games and have a chance to win a lot
+              profit. Deposits can be exchanged directly for goods but the deposit amount
+              Not for exchange.1.3 Pre-sale products: Products provided by the seller
+              By using the pre-sale product tool, only pre-sale words are highlighted on the
+              the title or on the product detail page, in addition other products do not use
+              Pre-sale product tools are not pre-sale products.1.4 Pre-sale system:
+              Access to the system of product tools provided to support sales by selling model
+              before. 1.5 Pre-sale goods price: is the price of goods before sale. The price of the goods
+              Pre-sale consists of two parts: selling price and payment. </div>
+            <div data-v-a9660e98="" class="rule-btn c-row m-t-20 c-row-center">
+              <button data-v-a9660e98=""
+                class="btn van-button van-button--default van-button--normal van-button--block van-button--round"
+                style="color: rgb(255, 255, 255); background: rgb(242, 65, 59); border-color: rgb(242, 65, 59);">
+                <div data-v-a9660e98="" class="van-button__content">
+                  <span data-v-a9660e98="" class="van-button__text">
+                    <span data-v-a9660e98="">I know</span>
+                  </span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-v-a9660e98="" class="van-popup van-popup--center van-popup-vf"
+        style="width: 80%; border-radius: 10px; max-width: 340px; z-index: 2006;display: none">
+        <div data-v-a9660e98="" class="rule-box">
+          <div data-v-a9660e98="" class="title c-row c-row-middle-center">Rules</div>
+          <div data-v-a9660e98="" class="info">
+            <div data-v-a9660e98="" class="comment">
+              <div data-v-a9660e98="">
+                <div data-v-a9660e98="">
+                  <p class="MsoNormal"><b><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">One
+                        one-time bonus minutes, </span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">45
+                      </span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">&nbsp
+                        ;second
+                        bet, </span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">15
+                      </span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">&nbsp
+                        ;second
+                        the rest is waiting to open temporary results ng</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">u
+                      </span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">ng
+                        place a bet. Prizes will be open all day. The total number of daily draws is 1440
+                        turns.</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                        <o:p></o:p>
+                      </span></b></p>
+                  <p class="MsoNormal"><span
+                      style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                      <o:p><b>&nbsp;</b></o:p>
+                    </span></p>
+                  <p class="MsoNormal"><b><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">N
+                      </span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">if
+                        you make a purchase of 100, there will be a deduction of 2, so
+                        there&nbsp;</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">clause
+                      </span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">&nbsp
+                        ;</span><span
+                        style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:'Times New Roman';mso-hansi-font-family:'Times New Roman';mso-bidi-font -family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;"><span
+                          style="font-family: " Times New Roman";">đ</span>
+                        <font face="宋体"><span style="font-family: " Times New Roman";">ặ</span>
+                        </font>
+                        <font face="Times New Roman"><span style="font-family: " Times New Roman";">t</span></font>
+                      </span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">&nbsp
+                        ;</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">real
+                        economy</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">&nbsp
+                        ;ofa
+                        you are 98</span><span
+                        style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:'Times New Roman';mso-hansi-font-family:'Times New Roman';mso-bidi-font -family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;">.</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                        <o:p></o:p>
+                      </span></b></p>
+                  <p class="MsoNormal"><span
+                      style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                      <o:p><b>&nbsp;</b></o:p>
+                    </span></p>
+                  <p class="MsoNormal"><!--[if !supportLists]--><b><span
+                        style="font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">1.&nbsp;</span>
+                      < !--[endif]--><span
+                          style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">C
+                        </span><span
+                          style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">select
+                          green: if results show </span><span
+                          style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">number
+                          "</span><span
+                          style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                          <font color="#000000" style="background-color: rgb(255, 255, 255);">1,3,7,9"</font>
+                          you will get (98 * 2)= 196.
+                        </span><span
+                          style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                          <o:p></o:p>
+                        </span>
+                    </b></p>
+                  <p class="MsoNormal"><span
+                      style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                      <o:p><b>&nbsp;</b></o:p>
+                    </span></p>
+                  <p class="MsoNormal"><b><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">-
+                        N</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">if
+                        display results </span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">number
+                        "</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">5
+                        ",
+                        you will get (98 * 1.5)= 147.</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                        <o:p></o:p>
+                      </span></b></p>
+                  <p class="MsoNormal"><span
+                      style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                      <o:p><b>&nbsp;</b></o:p>
+                    </span></p>
+                  <p class="MsoNormal"><b><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">2
+                        .
+                        C</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">select
+                        red: if results show </span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">number
+                        "</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">2
+                        ,4,6,8"
+                        you will get (98 * 2)= 196; if the result shows as "0" you will get (98 *
+                        1.5)= 147.</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                        <o:p></o:p>
+                      </span></b></p>
+                  <p class="MsoNormal"><span
+                      style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                      <o:p><b>&nbsp;</b></o:p>
+                    </span></p>
+                  <p class="MsoNormal"><b><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">3
+                        .
+                        C</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">select
+                        purple: if results show </span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">number
+                        "</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">0
+                        "
+                        or “5”, you will get (98 * 4.5)= 441.</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                        <o:p></o:p>
+                      </span></b></p>
+                  <p class="MsoNormal"><span
+                      style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                      <o:p><b>&nbsp;</b></o:p>
+                    </span></p>
+                  <p class="MsoNormal"><b><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">4
+                        .
+                        C</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">select
+                        number: if the result that opens is the same as the one you selected, you will get (98 * 9)=
+                        882.</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                        <o:p></o:p>
+                      </span></b></p>
+                  <p class="MsoNormal"><span
+                      style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                      <o:p><b>&nbsp;</b></o:p>
+                    </span></p>
+                  <p class="MsoNormal"><b><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">5
+                        .
+                        C</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">select
+                        large: if results show </span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">number
+                        "</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">5
+                        ,6,7,8,9"
+                        you will get (98 * 2)= 196.</span><span
+                        style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                        <o:p></o:p>
+                      </span></b></p>
+                  <p class="MsoNormal"><span
+                      style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                      <o:p><b>&nbsp;</b></o:p>
+                    </span></p>
+                  <p class="MsoNormal"><!--[if !supportLists]--><b><span
+                        style="font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">6.&nbsp;</span>
+                      < !--[endif]--><span
+                          style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">C
+                        </span><span
+                          style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">big
+                          /small:
+                          Result Display</span><span
+                          style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">&nbsp
+                          ;number</span><span
+                          style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">&nbsp
+                          ;"0,1,2,3,4"
+                          you will get (98 * 2)= 196.</span>
+                    </b><span
+                      style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:1.0000pt;">
+                      <o:p></o:p>
+                    </span></p>
+                </div>
+              </div>
+              <div data-v-a9660e98=""><!----></div>
+              <div data-v-a9660e98=""><!----></div>
+              <div data-v-a9660e98=""><!----></div>
+            </div>
+            <div data-v-a9660e98="" class="rule-btn c-row m-t-20 c-row-center"><button data-v-a9660e98=""
+                class="btn van-button valve-button--default van-button--normal van-button--block valve-button--round"
+                style="color: rgb(255, 255, 255); background: rgb(242, 65, 59); border-color: rgb(242, 65, 59);">
+                <div data-v-a9660e98="" class="van-button__content"><span data-v-a9660e98=""
+                    class="van-button__text"><span data-v-a9660e98="">I know</span></span></div>
+              </button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-v-7692a079="" data-v-a9660e98="" class="Loading c-row c-row-middle-center">
+      <div data-v-7692a079="" class="van-loading van-loading--circular">
+        <span data-v-7692a079="" class="van-loading__spinner van-loading__spinner--circular"
+          style="color: rgb(242, 65, 59);">
+          <svg data-v-7692a079="" viewBox="25 25 50 50" class="van-loading__circular">
+            <circle data-v-7692a079="" cx="50" cy="50" r="20" fill="none"></circle>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div id="myModal" class="modal" style="display: none">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <img id="popwhitebackgrounf" src="/missningBg-9deda6ac.png" alt="Popup Image">
+      <div class="text-over-image">
+        <!-- Your text here -->
+        <div id="myModal_header">Congratulations</div><br>
+      </div>
+      <div class="text-over-image-l">
+        <!-- Your text here -->
+        <div id="lottery_result">Lottery Result: <span class="btn-boox">Green</span><span class="btn-boox">7</span><span
+            class="btn-boox">Big</span></div><br>
+      </div>
+      <div class="text-over-image-2">
+        <!-- Your text here -->
+        <div id="myModal_result">Win: 50</div><br>
+      </div>
+      <div class="text-over-image-3">
+        <!-- Your text here -->
+        <div id="myModal_result_Period">Period: 1 Minute 1234567890 </div><br>
+      </div>
+      <div class="close-btn">
+        <span class="close-x">&times;</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the element that closes the modal
+    var closeBtn = document.querySelector(".close-btn");
+
+
+
+    // When the user clicks on the close button, close the modal
+    closeBtn.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, also close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="/js/client.js"></script>
+  <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"
+    integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H"
+    crossorigin="anonymous"></script>
+  <script src="/js/wingo3.js"></script>
+
+  <script>
+    function alertMess(text, sic, type) {
+      if (type == 'success') {
+        $('body').append(
+          `<div role="dialog" tabindex="0" class="msg van-popup van-popup--center van-toast van-toast--middle van-toast--success" style="z-index: 2001; display:ne;"><i class="van-badge__wrapper van-icon van-icon-success van-toast__icon"><!----><!----><!----></i><div class="van-toast__text">${text}</div><!----></div>`
+        );
+      } else {
+        $('body').append(
+          `<div role="dialog" tabindex="0" class="msg van-popup van-popup--center van-toast van-toast--middle van-toast--success" style="z-index: 2001; display:ne;"><i class="van-badge__wrapper van-icon van-icon-fail van-toast__icon"><!----><!----><!----></i><div class="van-toast__text">${text}</div><!----></div>`
+        );
+      }
+      setTimeout(() => {
+        $('.msg').removeClass('v-enter-active v-enter-to');
+        $('.msg').addClass('v-leave-active v-leave-to');
+        setTimeout(() => {
+          $('.msg').remove();
+        }, 100);
+        sic.removeClass('block-click');
+      }, 1000);
+    }
+    var drawLine = () => {
+    
+        const container = document.getElementById("trend_container");
+        const canvas = document.getElementById("line_canvas");
+        const ctx = canvas.getContext("2d");
+
+        function adjustCanvasSize() {
+          canvas.width = container.offsetWidth;
+          canvas.height = container.offsetHeight;
+        }
+
+        function getActiveElements() {
+          return Array.from(document.querySelectorAll(".trend .active"));
+        }
+
+        function drawLines() {
+          const activeElements = getActiveElements();
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.beginPath();
+
+          activeElements.forEach((element, index) => {
+            const rect = element.getBoundingClientRect();
+            const x =
+              rect.left +
+              rect.width / 2 -
+              container.getBoundingClientRect().left;
+            const y =
+              rect.top +
+              rect.height / 2 -
+              container.getBoundingClientRect().top;
+
+            if (index === 0) {
+              ctx.moveTo(x, y);
+            } else {
+              ctx.lineTo(x, y);
+            }
+          });
+
+          ctx.strokeStyle = "red";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        adjustCanvasSize();
+        drawLines();
+
+        window.addEventListener("resize", () => {
+          adjustCanvasSize();
+          drawLines();
+        });
+    }
+    
+    $(document).ready(function () {
+        fetchTrend()
+    });
+    
+    var fetchTrend = () => {
+        $.ajax({
+            type: "POST",
+            url: "/api/webapi/GetNoaverageEmerdList",
+              data: {
+                typeid: "3",
+                pageno: "0",
+                pageto: "10",
+                language: "vi",
+              },
+            dataType: "json",
+            success: function (response) {
+                loadTrend(response.data.gameslist)
+            }
+        });
+    }
+    
+    var loadTrend = (data, realtime = true) => {
+        let balls = [
+            'n0-30bd92d1.png',
+            'n1-dfccbff5.png',
+            'n2-c2913607.png',
+            'n3-f92c313f.png',
+            'n4-cb84933b.png',
+            'n5-49d0e9c5.png',
+            'n6-a56e0b9a.png',
+            'n7-5961a17f.png',
+            'n8-d4d951a4.png',
+            'n9-a20f6f42.png'
+        ]
+        if(realtime){
+            let html = '';
+            let ball_html = '';
+            data.forEach((element , i ) => {
+            let num = element.amount
+            
+            let size = element.amount > 4 ? 'B' : 'S';
+            
+            if(i < 5){
+                ball_html += `<img src="/assets/png/${balls[element.amount]}" alt="">`
+            }
+            
+            
+            html += `<div data-v-d79474c9="" class="trend" issuenumber="${element.period}" number="8" colour="red" rowid="0">
+                    <div data-v-d79474c9="" class="van-row">
+                      <div data-v-d79474c9="" class="van-col van-col--8">
+                        <div data-v-d79474c9="" class="Trend__C-body2-IssueNumber">${element.period}</div>
+                      </div>
+                      <div data-v-d79474c9="" class="van-col van-col--16">
+                        <div data-v-d79474c9="" class="Trend__C-body2-Num"><canvas data-v-d79474c9="" canvas=""
+                            id="myCanvas0" class="line-canvas"></canvas>
+                          <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 0 ? 'active action0' : ''}">0</div>
+                          <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 1 ? 'active action1' : ''}">1</div>
+                          <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 2 ? 'active action2' : ''}">2</div>
+                          <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 3 ? 'active action3' : ''}">3</div>
+                          <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 4 ? 'active action4' : ''}">4</div>
+                          <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 5 ? 'active action5' : ''}">5</div>
+                          <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 6 ? 'active action6' : ''}">6</div>
+                          <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 7 ? 'active action7' : ''}">7</div>
+                          <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 8 ? 'active action8' : ''}">8</div>
+                          <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 9 ? 'active action9' : ''}">9</div>
+                          <div data-v-d79474c9="" class="Trend__C-body2-Num-BS is${size}">${size}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>`;
+            });
+             $('.wingo-change-time-img').html(ball_html);
+            $('.Trend__C-body2').html(html)
+            
+        }else{
+            let html = '';
+            let ball_html = '';
+            data.forEach(element => {
+                let num = element.amount
+                ball_html += `<img src="/assets/png/${balls[element.amount]}" alt="">`
+                let size = element.amount > 4 ? 'B' : 'S';
+                
+                
+                html += `<div data-v-d79474c9="" class="trend" issuenumber="${element.period}" number="8" colour="red" rowid="0">
+                            <div data-v-d79474c9="" class="van-row">
+                              <div data-v-d79474c9="" class="van-col van-col--8">
+                                <div data-v-d79474c9="" class="Trend__C-body2-IssueNumber">${element.period}</div>
+                              </div>
+                              <div data-v-d79474c9="" class="van-col van-col--16">
+                                <div data-v-d79474c9="" class="Trend__C-body2-Num"><canvas data-v-d79474c9="" canvas=""
+                                    id="myCanvas0" class="line-canvas"></canvas>
+                                  <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 0 ? 'active action0' : ''}">0</div>
+                                  <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 1 ? 'active action1' : ''}">1</div>
+                                  <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 2 ? 'active action2' : ''}">2</div>
+                                  <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 3 ? 'active action3' : ''}">3</div>
+                                  <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 4 ? 'active action4' : ''}">4</div>
+                                  <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 5 ? 'active action5' : ''}">5</div>
+                                  <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 6 ? 'active action6' : ''}">6</div>
+                                  <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 7 ? 'active action7' : ''}">7</div>
+                                  <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 8 ? 'active action8' : ''}">8</div>
+                                  <div data-v-d79474c9="" class="Trend__C-body2-Num-item ${num == 9 ? 'active action9' : ''}">9</div>
+                                  <div data-v-d79474c9="" class="Trend__C-body2-Num-BS is${size}">${size}</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>`;
+            });
+            $('.Trend__C-body2').prepend(html);
+            $('.Trend__C-body2').children(':last-child').remove();
+            
+            $('.wingo-change-time-img').prepend(ball_html);
+            $('.wingo-change-time-img').children(':last-child').remove();
+        }
+        drawLine()
+    }
+    $('#other_page').removeClass('action')
+  </script>
+</body>
+
+</html>

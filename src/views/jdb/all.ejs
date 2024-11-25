@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jdb | All</title>
+    <link rel="shortcut icon" href="/images/bitbug_favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
+        integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body style=" background-color: #9195a3;">
+
+    <style>
+        body {
+            background: #090135;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            padding: 0px;
+            margin: 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .app {
+            background: #fff;
+            max-width: 400px;
+            min-height: 100VH;
+            min-width: 100%;
+        }
+
+        @media (min-width:400px) {
+            .app {
+                min-width: 400px;
+            }
+        }
+
+        body nav {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        body nav .back_button {
+            display: flex;
+            border: 0;
+            background: transparent;
+            color: #000;
+        }
+
+        body nav .page_title {
+            color: #000;
+
+        }
+
+        main {
+            display: grid;
+            grid-gap: 0.21333rem;
+            margin-bottom: 0.56rem;
+            grid-template-columns: repeat(3, 1fr);
+            box-sizing: border-box;
+            gap: 10PX;
+            padding: 10px;
+        }
+
+        main .jili_games_card {
+            position: relative;
+            border-radius: 0.26667rem;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+            box-sizing: border-box;
+            overflow: clip;
+            isolation: isolate;
+            position: relative;
+            padding: 0PX;
+            margin: 0PX;
+            background: transparent;
+            border: 0;
+            background: rgb(8, 3, 156);
+            background: -moz-linear-gradient(52deg, rgba(8, 3, 156, 1) 0%, rgba(214, 0, 255, 1) 100%);
+            background: -webkit-linear-gradient(52deg, rgba(8, 3, 156, 1) 0%, rgba(214, 0, 255, 1) 100%);
+            background: linear-gradient(52deg, rgba(8, 3, 156, 1) 0%, rgba(214, 0, 255, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#08039c", endColorstr="#d600ff", GradientType=1);
+        }
+
+        main .jili_games_card img {
+            box-sizing: border-box;
+            object-fit: cover;
+            object-fit: fill;
+            border-radius: 0.26667rem;
+            background: linear-gradient(153deg, #a4ebf3 5.33%, #ccf2f4 93.42%), linear-gradient(153deg, #a4ebf3 5.33%, #ccf2f4 93.42%);
+            box-shadow: 0 -0.05333rem 0.16rem #92a7ff inset;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+
+        }
+
+        main .jili_games_card .back_ct {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            z-index: -1;
+            font-weight: 700;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            rotate: 25deg;
+            font-size: 20px;
+        }
+
+        header{
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+        }
+        header.hide{
+            display: none;
+        }
+        .tab_button{
+            padding: 10px;
+            background: #0000002c;
+            color: #000;
+            border: 0;
+            border-radius: 5px;
+            flex: 1;
+            text-align: center;
+        }
+        .tab_button.open{
+            background: #000;
+            color: #000;
+        }
+    </style>
+
+    
+
+        
+
+        <style>
+            .loader_main {
+                border: 9px solid #f3f3f3;
+                /* Light grey */
+                border-top: 9px solid #3498db;
+                /* Blue */
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                animation: spin 1.3s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+
+            }
+
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .loader_popup {
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0px;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.767);
+                display: none;
+            }
+
+            .loader_main.display {
+                display: flex;
+            }
+
+
+            .loader_popup .loader_text {
+                color: #000;
+                font-size: 18px;
+                margin-top: 15px;
+            }
+            
+            
+            .game-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 5px;
+            justify-content: center;
+        }
+        .game-item {
+            flex: 1 1 calc(33.333% - 10px); /* 3 items per row with gap */
+            box-sizing: border-box;
+            text-align: center;
+            max-width: calc(33.333% - 10px);
+        }
+        .game-link {
+            display: block;
+            text-decoration: none;
+            color: #000;
+        }
+        .game-image {
+            width: 115px;
+            border-radius: 10px;
+            height: 140px;
+            object-fit: cover;
+        }
+        </style>
+        
+        
+        
+        <div class="app">
+
+        <nav>
+            <button class="back_button" onclick="window.location.href='/home'">
+                <svg width="24" height="24" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6.85355 3.14645C7.04882 3.34171 7.04882 3.65829 6.85355 3.85355L3.70711 7H12.5C12.7761 7 13 7.22386 13 7.5C13 7.77614 12.7761 8 12.5 8H3.70711L6.85355 11.1464C7.04882 11.3417 7.04882 11.6583 6.85355 11.8536C6.65829 12.0488 6.34171 12.0488 6.14645 11.8536L2.14645 7.85355C1.95118 7.65829 1.95118 7.34171 2.14645 7.14645L6.14645 3.14645C6.34171 2.95118 6.65829 2.95118 6.85355 3.14645Z"
+                        fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+
+            <h4 class="page_title">Jdb |  All  </h1>
+                    <div></div>
+        </nav>
+      
+        <div class="game-container" id="game-container">
+        <!-- Game items will be dynamically inserted here -->
+    </div>
+        
+        <div class="loader_popup display">
+            <div class="loader_main"></div>
+            <h6 class="loader_text">
+                Loading Game
+            </h6>
+        </div>
+    </div>
+    <script>
+        const userInfoTypes = {
+            phoneNumber: "phone_user",
+        };
+
+        const mTypes = {
+            slots: {
+                gType0: [
+                    '14092', '14091', '14090', '14089', '14088', '14087', '14086', '14085', '14084', '14083', 
+                    '14082', '14081', '14080', '14079', '14077', '14075', '14070', '14068', '14067', '14065', 
+                    '14064', '14063', '14061', '14060', '14059', '14058', '14055', '14054', '14053', '14052', 
+                    '14051', '14050', '14048', '14047', '14046', '14045', '14044', '14043', '14042', '14041', 
+                    '14040', '14039', '14038', '14036', '14035', '14034', '14033', '14030', '14029', '14027', 
+                    '14025', '14022', '14021', '14018', '14016', '14012', '14010', '14008', '14007', '14006', 
+                    '14005', '14003', '8001', '15012', '15010', '15005', '15002', '15001', '8051', '8050', '8049', '8048', '8047', '8046', '8044', '8035', '8028', '8023', '8022', '8021', '8020', '8019', '8018', '8017', '8015', '8014', '8007', '8006', '8005', '8004', '8003', '8002'
+                ],
+                gType32: [
+                    '32059', '32058', '32057', '32056', '32055', '32054', '32053', '32051', '32050', '32049',
+                    '32047', '32048', '32045', '32043', '32042', '32041', '32040', '32039', '32038', '32037',
+                    '32036', '32034', '32032', '32031', '32030', '32029', '32028', '32027', '32026', '32024',
+                    '32023', '32022', '32021', '32020', '32019', '32018', '32017', '32016'
+                ]
+            },
+            spribe: {
+                gType22: [
+                    '22001', '22009', '22008', '22007', '22006', '22005', '22004', '22003',  '22002'
+                ]
+            },
+            casino: [
+                '18030', '18029', '18028', '18027', '18026', '18025', '18024', '18023', '18022', '18021',
+                '18020', '18013', '18005', '18004', '18002', '18001'
+            ]
+        };
+
+        let phoneNumber = '';
+
+        const fetchUser = async () => {
+            try {
+                const response = await fetch('/api/webapi/GetUserInfo');
+                const data = await response.json();
+                if (!data || !data.data) throw new Error("User data not found!");
+
+                phoneNumber = encodeURIComponent(data.data[userInfoTypes.phoneNumber]);
+
+                displayGames('all'); // Initially display all games
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        const displayGames = (category) => {
+            const container = document.getElementById('game-container');
+            container.innerHTML = '';
+            let gamesToDisplay = [];
+
+            if (category === 'all') {
+                gamesToDisplay = [
+                ...mTypes.spribe.gType22.map(mType => ({ mType, gType: 22 })),
+                    ...mTypes.slots.gType0.map(mType => ({ mType, gType: 0 })),
+                    ...mTypes.slots.gType32.map(mType => ({ mType, gType: 32 })),
+                   ...mTypes.casino.map(mType => ({ mType, gType: 18 })),
+                ];
+            } else if (category === 'slots') {
+                gamesToDisplay = [
+                    ...mTypes.slots.gType0.map(mType => ({ mType, gType: 0 })),
+                    ...mTypes.slots.gType32.map(mType => ({ mType, gType: 32 }))
+                ];
+            } else if (category === 'spribe') {
+                gamesToDisplay = mTypes.spribe.gType22.map(mType => ({ mType, gType: 22 }));
+            } else if (category === 'casino') {
+                gamesToDisplay = mTypes.casino.map(mType => ({ mType, gType: 18 }));
+            }
+
+            gamesToDisplay.forEach(game => {
+                const gameUrl = `https://api2.api-jetx.online/home/post?iv=58fcfd9edc6bac1c&key=a9475e3d049664c8&uid=${phoneNumber}&serverUrl=https://aviator.diuwin.asia&parent=bwininrag&gType=${game.gType}&mType=${game.mType}`;
+                const imageUrl = `https://api2.api-jetx.online/jdbimagesweb/${game.mType}.png`;
+
+                const gameItem = document.createElement('div');
+                gameItem.className = 'game-item';
+
+                const img = new Image();
+                img.src = imageUrl;
+                img.className = 'game-image';
+                img.onerror = () => {
+                    img.src = 'https://ossimg.91admin123admin.com/91club/vendorlogo/vendorlogo_2024010216505212ii.png';
+                };
+
+                const gameLink = document.createElement('a');
+                gameLink.href = gameUrl;
+                gameLink.className = 'game-link';
+                gameLink.appendChild(img);
+
+                gameItem.appendChild(gameLink);
+                container.appendChild(gameItem);
+            });
+        };
+
+        document.querySelectorAll('.category-button').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.category-button').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                const category = this.getAttribute('data-category');
+                displayGames(category);
+            });
+        });
+
+        fetchUser();
+    </script>
+     <script>
+        // Prevent the context menu from showing up
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        });
+
+        // Prevent the default action for touch events
+        document.addEventListener('touchstart', function(event) {
+            // Optionally, you can handle touch start events here
+        });
+
+        document.addEventListener('touchend', function(event) {
+            // Optionally, you can handle touch end events here
+        });
+
+        // For specific elements (optional)
+        document.querySelectorAll('p').forEach(element => {
+            element.addEventListener('contextmenu', function(event) {
+                event.preventDefault();
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Statisticals</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+</head>
+
+<body class="dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <div class="wrapper">
+        <%- include('nav') %>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Create Agent Account</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 col-lg-6">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Create a Collaborator Account</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <form>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="username" style="color: #3498db;">Account</label>
+                                            <input type="text" class="form-control" id="username" placeholder="Enter Account Number" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password" style="color: #3498db;">Password</label>
+                                            <input type="text" class="form-control" id="password" placeholder="Enter Password" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="allowed_tabs" style="color: #3498db;">Allowed Tabs</label>
+                                            <select class="form-control select2" id="allowed_tabs" multiple="multiple" style="width: 100%;">
+                                                <option value="1">Wingo</option>
+                                                <option value="2">5D</option>
+                                                <option value="3">K3</option>
+                                                <option value="4">Members</option>
+                                                <option value="5">Collaborator</option>
+                                                <option value="6">Create Collaborator</option>
+                                                <option value="7">Browse Recharge</option>
+                                                <option value="8">Browse Withdrawal</option>
+                                                <option value="9">Level Setting</option>
+                                                <option value="10">Created Salary</option>
+                                                <option value="11">Daily Salary Eligibility</option>
+                                                <option value="12">Recharge (Approved)</option>
+                                                <option value="13">Withdrawal (Approved)</option>
+                                                <option value="14">Create Giftcode</option>
+                                                <option value="15">Settings</option>
+                                                <option value="16">Create Agent</option>
+                                                <option value="17">Go To Website</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-danger create_ctv" style="width: 100%;">Create</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-md-8 col-lg-6">
+                            <div class="card card-secondary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Add Dummy User Account</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <form>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="dummy_username" style="color: #3498db;">Account</label>
+                                            <input type="text" class="form-control" id="dummy_username" placeholder="Enter Account Number" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dummy_password" style="color: #3498db;">Password</label>
+                                            <input type="text" class="form-control" id="dummy_password" placeholder="Enter Password" value="">
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                    
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-secondary create_dummy_user" style="width: 100%;">Add Dummy User</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+
+            <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+                <i class="fas fa-chevron-up"></i>
+            </a>
+        </div>
+    </div>
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/dist/js/adminlte.min.js"></script>
+    <script src="/js/admin/admin.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#allowed_tabs').select2();
+        });
+
+        $('.create_ctv').click(function (e) { 
+            e.preventDefault();
+            let username = $('#username').val().trim(); 
+            let password = $('#password').val().trim();
+            let allowed_tabs = $('#allowed_tabs').val().join(',');
+            let invitecode = "344344742767"; // Replace with your default invite code
+            let dialcode = "+91"; // Replace with your default dial code
+
+            if (username && password && allowed_tabs) {
+                $.ajax({
+                    type: "POST",
+                    url: "/api/webapi/register",
+                    data: {
+                        phoneNumber: username,
+                        pwd: password,
+                        invitecode: invitecode,
+                        dialCode: dialcode,
+                        allowed_tabs: allowed_tabs,
+                    },
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.status == true) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: `${response.message}`,
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: `${response.message}`,
+                            })
+                        }
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Please enter complete information',
+                })
+            }
+        });
+    </script>
+
+    
+<script>
+    $('.create_dummy_user').click(function (e) { 
+        e.preventDefault();
+        let dummy_username = $('#dummy_username').val().trim(); 
+        let dummy_password = $('#dummy_password').val().trim();
+
+        if (dummy_username && dummy_password) {
+            $.ajax({
+                type: "POST",
+                url: "/api/webapi/registerDummyUser",
+                data: {
+                    phoneNumber: dummy_username,
+                    pwd: dummy_password,
+                },
+                dataType: "json",
+                success: function (response) {
+                    if (response.status == true) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: `${response.message}`,
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: `${response.message}`,
+                        })
+                    }
+                }
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Please enter complete information',
+            })
+        }
+    });
+
+
+
+    document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+      
+        const formData = new FormData();
+        for (let i = 1; i <= 8; i++) {
+          const fileInput = document.getElementById(`image${i}`);
+          if (fileInput.files.length > 0) {
+            formData.append(`image${i}`, fileInput.files[0]);
+          }
+        }
+      
+        try {
+          const response = await fetch('/upload-images', {
+            method: 'POST',
+            body: formData,
+          });
+      
+          const result = await response.json();
+          document.getElementById('message').innerText = result.message;
+        } catch (error) {
+          console.error('Error uploading images:', error);
+          document.getElementById('message').innerText = 'Error uploading images';
+        }
+      });
+</script>
+</body>
+
+</html>
